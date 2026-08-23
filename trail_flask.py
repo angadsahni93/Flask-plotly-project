@@ -16,7 +16,9 @@ def user(name): # uses 'name' argument and incorporates it into the return strin
 
 @app.route("/admin") # when at /admin page...
 def admin(): # function for admin page
-    return redirect(url_for("home")) # redirect to home page as defined by 'def home()' function above.
+    return redirect(url_for("user", name="Admin!")) 
+# redirect to user page as defined by 'def user()' function above.
+# name="Admin!" is the argument used by user function in th place of <name>.
 
 if __name__ == "__main__":
     app.run(debug=True)
