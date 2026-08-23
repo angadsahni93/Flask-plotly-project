@@ -1,4 +1,4 @@
-# To see run in browser, run python "Flask.py" in terminal and go to 'http://' provided.
+# To see run in browser, run >python Flask.py< in terminal and go to 'http://' provided.
 
 from flask import Flask, redirect, url_for
 
