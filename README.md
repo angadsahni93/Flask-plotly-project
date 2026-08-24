@@ -1,4 +1,6 @@
-# Flask Task Master
+# Flask & Plotly Project
+
+## Flask Task Master
 
 A simple Flask to-do app using HTML templates, SQLite, SQLAlchemy, and a Plotly dashboard.
 
