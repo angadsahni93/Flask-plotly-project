@@ -1,0 +1,21 @@
+{% extends "base.html" %} {# Inherit stuff from base.html #}
+
+{% block head %}
+<title>Task Master</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1>Update Task {{ task.id }}</h1>
+
+<form action="/update/{{ task.id }}" method="POST"> <!-- action = URL to send form to: in this case "/update/{{task.id}}" defined in app.py; method = how to send it, POST sends data. -->
+    <br>
+    <br>
+    <!-- Text box; name="content" is the key that Flask reads, and id="content" is what CSS reads from the form. Placeholder text is for user guidance. -->
+    <input type="text" name="content" id="content" value="{{ task.content }}"> 
+    <br>
+    <input type="submit" value="Update Task"> <!-- Update Task button; sends the form data to the action URL. -->
+
+</form>
+</div>
+{% endblock %}

@@ -26,7 +26,7 @@
               <td><!-- Actions column; gives two options: Delete or Update task. -->
                   <a href="/delete/{{ task.id }}">Delete</a>
                   <br>
-                  <a href="">Update</a>
+                  <a href="/update/{{ task.id }}">Update</a>
               </td>
           </tr>
         {%endfor%}{# Ends the For-Loop. #}
@@ -36,7 +36,7 @@
     <br>
     <br>
     <!-- Text box; name="content" is the key that Flask reads, and id="content" is what CSS reads from the form. Placeholder text is for user guidance. -->
-    <input type="text" name="content" id="content" placeholder="Enter a task"> 
+    <input type="text" name="content" id="content" placeholder="Add a task"> 
     <br>
     <input type="submit" value="Add Task"> <!-- Submit button; sends the form data to the action URL. -->
 

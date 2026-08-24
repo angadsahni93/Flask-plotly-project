@@ -45,6 +45,31 @@ def index():
 
 @app.route("/delete/<int:id>") # <int:id> means that this route expects an integer parameter named 'id'. 
 ## This page will store the Deleted tasks from table in index.html.
+def delete(id):
+    task_to_delete = Todo.query.get_or_404(id) #
+
+    try:
+        db.session.delete(task_to_delete) # delete task from database session based of ID.
+        db.session.commit() # commit the session to save the changes to the database.
+        return redirect("/") # redirect to the index.html to show the 'updated' list of tasks.
+    except:
+        return "There was a problem deleting that task."
+
+
+@app.route("/update/<int:id>", methods=['GET', 'POST']) # GET = show the updated form, POST = submit the updated form.
+def update(id):
+    task = Todo.query.get_or_404(id) # get the task to update from the database based on ID.
+
+    if request.method == 'POST': # if user submitted the form (defined in update.html)
+        task.content = request.form["content"] # update the task content with the new value from the form.
+        try:
+            db.session.commit() # commit the session to save the changes to the database.
+            return redirect("/") # redirect to the index page to show the updated list of tasks.
+        except:
+            return "There was an issue updating your task."
+    else: # no task entered.
+        return render_template("update.html", task=task)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
