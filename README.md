@@ -58,7 +58,7 @@ templates/base.html
 |-- provides {% block head %} and {% block body %}
 ```
 
-## Plotly Dashboard
+## Plotly Dashboard (displayed in index.html)
 
 The Plotly line graph shows the total number of tasks over time using `TaskEvent` rows from `site.db`.
 
