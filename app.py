@@ -67,7 +67,7 @@ def update(id):
             return redirect("/") # redirect to the index page to show the updated list of tasks.
         except:
             return "There was an issue updating your task."
-    else: # no task entered.
+    else: 
         return render_template("update.html", task=task)
 
 
