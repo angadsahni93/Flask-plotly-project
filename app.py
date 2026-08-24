@@ -21,7 +21,9 @@ class Todo(db.Model):
         return '<Task %r>' % self.id
 
 ## NOTE: 'templates' folder is an innate name for Flask to look for HTML files.
-@app.route("/")
+# GET = browser loads this page.
+# POST = browser sends form data to this route, e.g. text from an "add task" input.
+@app.route("/", methods=['POST', 'GET'])
 def index(): 
     return render_template("index.html") 
 

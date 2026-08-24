@@ -1,4 +1,14 @@
 body {
     margin: 0;
     font-family: sans-serif;
-} 
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #333;
+    padding: 8px;
+}
