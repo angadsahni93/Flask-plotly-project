@@ -3,8 +3,17 @@ body {
     font-family: sans-serif;
 }
 
+.content {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
 table {
     border-collapse: collapse;
+    margin: 0 auto;
 }
 
 th,

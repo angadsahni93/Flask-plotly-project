@@ -1,7 +1,7 @@
 {% extends "base.html" %} {# Inherit stuff from base.html #}
 
 {% block head %}
-<h1>Template</h1>
+<title>Task Master</title>
 {% endblock %}
 
 {% block body %}
@@ -10,23 +10,36 @@
 
     <table>
         <tr>
+            <th>ID</th>
             <th>Task</th> <!-- th = table header cell -->
             <th>Added</th>
             <th>Actions</th>
         </tr>
-        <tr>
-            <td></td> <!-- td = table data cell -->
-            <td></td>
-            <td>
-                <a href="">Delete</a>
-                <br>
-                <a href="">Update</a>
-            </td>
-        </tr>
+        {%for task in tasks%} {# For-Loop through each task sent from app.py. #}
+          <tr>
+              <!-- td = table data cell -->
+               <td>{{ task.id }}</td>
+              <td>{{ task.content }}</td> <!-- Task column; returns content of each task in the Task column. -->
+
+              <td>{{ task.date_created.date() }}</td> <!-- Added column; returns the date the task was create on.-->
+
+              <td><!-- Actions column; gives two options: Delete or Update task. -->
+                  <a href="">Delete</a>
+                  <br>
+                  <a href="">Update</a>
+              </td>
+          </tr>
+        {%endfor%}{# Ends the For-Loop. #}
 </table>
 
 <form action="/" method="POST"> <!-- action = URL to send form to: in this case "/" is defined as index.html in app.py; method = how to send it, POST sends data. -->
-    
+    <br>
+    <br>
+    <!-- Text box; name="content" is the key that Flask reads, and id="content" is what CSS reads from the form. Placeholder text is for user guidance. -->
+    <input type="text" name="content" id="content" placeholder="Enter a task"> 
+    <br>
+    <input type="submit" value="Add Task"> <!-- Submit button; sends the form data to the action URL. -->
+
 </form>
 </div>
 {% endblock %}
