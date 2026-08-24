@@ -2,6 +2,7 @@
 
 {% block head %}
 <title>Task Master</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
 {% endblock %}
 
 {% block body %}
@@ -45,6 +46,52 @@
     <br>
     <input type="submit" value="Add Task"> <!-- Submit button; sends the form data to the action URL. -->
 
-</form>
+	</form>
+
+    <h2>Task Dashboard</h2>
+    <div id="task-dashboard-chart"></div>
+
+    <script>
+        const chartData = {{ chart_data|default([])|tojson }};
+
+        const times = chartData.map(row => row.time);
+        const taskCounts = chartData.map(row => row.task_count);
+        const lineSegments = [];
+
+        for (let i = 1; i < chartData.length; i++) {
+            lineSegments.push({
+                x: [times[i - 1], times[i]],
+                y: [taskCounts[i - 1], taskCounts[i]],
+                type: "scatter",
+                mode: "lines",
+                line: {
+                    color: taskCounts[i] >= taskCounts[i - 1] ? "green" : "red",
+                    width: 3
+                },
+                showlegend: false,
+                hoverinfo: "skip"
+            });
+        }
+
+        const markers = {
+            x: times,
+            y: taskCounts,
+            type: "scatter",
+            mode: "markers",
+            name: "Tasks Existing",
+            marker: {
+                color: "black",
+                size: 8
+            }
+        };
+
+        Plotly.newPlot("task-dashboard-chart", [...lineSegments, markers], {
+            title: "Tasks Over Time From site.db",
+            xaxis: { title: "Date & Time" },
+            yaxis: { title: "Total Tasks" }
+        }, {
+            responsive: true
+        });
+    </script>
 </div>
 {% endblock %}

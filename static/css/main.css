@@ -21,3 +21,10 @@ td {
     border: 1px solid #333;
     padding: 8px;
 }
+
+#task-dashboard-chart {
+    width: 90%;
+    max-width: 900px;
+    height: 450px;
+    margin: 30px auto;
+}
