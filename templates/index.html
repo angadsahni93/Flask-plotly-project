@@ -24,7 +24,7 @@
               <td>{{ task.date_created.date() }}</td> <!-- Added column; returns the date the task was create on.-->
 
               <td><!-- Actions column; gives two options: Delete or Update task. -->
-                  <a href="">Delete</a>
+                  <a href="/delete/{{ task.id }}">Delete</a>
                   <br>
                   <a href="">Update</a>
               </td>

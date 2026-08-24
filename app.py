@@ -43,7 +43,8 @@ def index():
         ## tasks=tasks passes the list of tasks to the HTML template, so it can display them. 'tasks' variable will be aded to the index.html template.
 
 
-
+@app.route("/delete/<int:id>") # <int:id> means that this route expects an integer parameter named 'id'. 
+## This page will store the Deleted tasks from table in index.html.
 
 if __name__ == "__main__":
     app.run(debug=True)
